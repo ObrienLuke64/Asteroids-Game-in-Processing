@@ -50,7 +50,7 @@ void mainMenu()
     image(title, -5, -50, 500, 250);
   }
     textFont(f, 30);      //Choose font
-    text("Play [Start]", 300, 250);    //Display text
+    text("Plap [Start]", 300, 250);    //Display text
     text("Help [A]", 300, 350);    //Display text
     text("Exit [B]", 300, 450);    //Display text
     
