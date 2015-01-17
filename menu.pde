@@ -3,6 +3,9 @@ PImage marine;
 PImage title;
 float transparency = 1;
 PFont f;                //Declare font variable
+boolean coin;
+
+//--------------------------------------------------------------------------------------
 
 void setup()
 {
@@ -11,12 +14,17 @@ void setup()
   marine = loadImage("Idle.gif");
   title = loadImage("Title2.gif");
   a = 0;
+  coin=true;
 }
+
+//--------------------------------------------------------------------------------------
 
 void draw()
 {
   mainMenu();
 }
+
+//--------------------------------------------------------------------------------------
 
 void mainMenu()
 {
@@ -50,30 +58,45 @@ void mainMenu()
     image(title, -5, -50, 500, 250);
   }
     textFont(f, 30);      //Choose font
-    text("Plap [Start]", 300, 250);    //Display text
-    text("Help [A]", 300, 350);    //Display text
-    text("Exit [B]", 300, 450);    //Display text
+    
+    if (coin)
+    {
+       text("Insert Coin(s)", 260, 320);   //Display text
+       if (keyPressed) 
+       {
+         coin=false;
+       }
+    }
+    
+    if (!coin)
+    {
+      text("Play [Start]", 300, 250);    //Display text
+      text("Help [A]", 300, 350);    //Display text
+      text("Exit [B]", 300, 450);    //Display text
+    }
     
   if (keyPressed)
   {
     if (key == 'a' || key == 'A') 
     {
-      //gameStart = true;
+      help();
     }
     if (key == 'b' || key == 'B') 
     {
-      help();
+      exit();
     }
     if (key == 'x' || key == 'X') 
     {
-      exit();
+      
+    }
+    if (key == 'c' || key == 'C') 
+    {
+      coin=false;
     }
   } 
-    
 }
 
 void help()
 {
-  
+  clear();
 }
-
