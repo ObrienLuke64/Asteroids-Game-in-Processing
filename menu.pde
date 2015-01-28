@@ -1,6 +1,6 @@
 //DT228-2 
 //Programming Assignment 2
-//By Luke O'Brien
+//By Luke O'Brien, C13435702
 
 float a;  //Variable for main menu scanner line
 PImage marine;  //Loading a picture
@@ -22,6 +22,10 @@ Ship fist;  //(Fist is the ship's name)
 boolean keyup = false;  //see if keys pressed
 boolean keyright = false;  //see if keys pressed
 boolean keyleft = false;  //see if keys pressed
+
+import ddf.minim.*;  //import sound library
+AudioSnippet song;  
+Minim minim;
 
 //--------------------------------------------------------------------------------------
 
@@ -57,6 +61,10 @@ void setup()
   }
   zap = new ArrayList<Laser>();  //laser arraylist
   fist = new Ship();             //ship arraylist
+  
+  minim = new Minim(this);
+  song = minim.loadSnippet("Laser.wav");  //import my sound
+  song.setGain(-15);  //Lowers volume of sound  (It gets annoying fast -Luke) 
 }    
 
 //--------------------------------------------------------------------------------------
@@ -248,6 +256,8 @@ void keyPressed() //For in game controls
     if (keyCode == RIGHT) keyright = true;
   }
   if (key == ' ')  fist.shoot();  //Space triggers the ship to shoot
+  if (key == ' ')  song.play();  //plays a sound with each shot
+  if (key == ' ')  song.rewind();  //rewind the sound to be played again
   if (key == 'r')  //r resets all gameplay variables and their positions
   {
     rocks.clear();  //Clear arraylist
